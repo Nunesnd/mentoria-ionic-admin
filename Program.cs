@@ -1,4 +1,18 @@
+using adminMeuApp.Models.Infraestrutura.Database;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+string connString = builder.Configuration.GetConnectionString("MinhaConexao");
+builder.Services.AddDbContext<BancoContexto>(options => options.UseSqlServer(connString));
+
+/*
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    JToken jAppSettings = JToken.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "appsettings.json")));
+    optionsBuilder.UseSqlServer(jAppSettings["MinhaConexao"].ToString());  
+}
+*/
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
