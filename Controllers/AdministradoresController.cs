@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using adminMeuApp.Models.Dominio.Entidades;
 using adminMeuApp.Models.Infraestrutura.Database;
+using adminMeuApp.Models.Infraestrutura.Autenticacao;
 
 namespace adminMeuApp.Controllers
 {
+    
+    [Logado]
+
     public class AdministradoresController : Controller
     {
         private readonly BancoContexto _context;
@@ -19,6 +23,7 @@ namespace adminMeuApp.Controllers
             _context = context;
         }
 
+        //[Logado]
         // GET: Administradores
         public async Task<IActionResult> Index()
         {

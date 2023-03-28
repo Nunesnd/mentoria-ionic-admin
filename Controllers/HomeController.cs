@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using adminMeuApp.Models;
+using adminMeuApp.Models.Infraestrutura.Autenticacao;
 
 namespace adminMeuApp.Controllers;
 
@@ -13,6 +14,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [Logado]
     public IActionResult Index()
     {
         return View();
@@ -21,6 +23,12 @@ public class HomeController : Controller
     public IActionResult Privacy()
     {
         return View();
+    }
+
+    public IActionResult Sair()
+    {
+        this.HttpContext.Response.Cookies.Delete("adm_cms");
+        return View("/login/logar");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

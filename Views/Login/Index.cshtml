@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "_LayoutLogin";
+}
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="https://i.pinimg.com/originals/14/e6/48/14e6481e2c18b35123f6b8749fa00562.jpg" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+        <form action="/login/logar" method="post">
+            <input type="login" id="login" class="fadeIn second" name="login" placeholder="Informe seu login">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Insira sua senha">
+
+            @if(!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <div class="alert alert-danger" style="margin: 10px" role="alert">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <input type="submit" class="fadeIn fourth" value="Entrar">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Esqueceu a senha?</a>
+        </div>
+
+    </div>
+</div>
