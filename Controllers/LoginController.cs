@@ -36,7 +36,7 @@ public class LoginController : Controller
             {
                 this.HttpContext.Response.Cookies.Append("adm_cms", adms.First().Id.ToString(), new CookieOptions
                 {
-                    Expires = DateTimeOffset.UtcNow.AddSeconds(10),
+                    Expires = DateTimeOffset.UtcNow.AddYears(1),
                     HttpOnly = true
                 });
                 Response.Redirect("/");
